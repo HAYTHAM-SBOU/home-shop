@@ -1,0 +1,128 @@
+/* إعدادات أساسية */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  background: linear-gradient(120deg, #fdfbfb, #ebedee);
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+}
+
+/* تصميم المنتجات */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1.2em;
+  color: #34495e;
+}
+
+.product p {
+  margin: 5px 0;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.product button {
+  margin-top: 10px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.product button:hover {
+  background: #2ecc71;
+  transform: scale(1.05);
+}
+
+/* تصميم السلة */
+.cart {
+  background: white;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cart h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+#cartList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+#cartList li {
+  background: #f1f2f6;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#totalPrice {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+  color: #e74c3c;
+}
+
+.order {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.order:hover {
+  background: #20b758;
+  transform: scale(1.03);
+}

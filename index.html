@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محل المواد المنزلية</title>
+  <link rel="stylesheet" href="style.css">
+<body>
+    
+<h1>🛒 محل المواد المنزلية</h1>
+
+<!-- المنتوجات -->
+<section class="products">
+  <div class="product">
+    <img src="javel.jpeg">
+    <h3>javel</h3>
+    <p>prix : 13 DH</p>
+    <button onclick="addToCart('javel', 13)">➕ أضف للسلة</button>
+  </div>
+
+  <div class="product">
+    <img src="hair straightener.jpeg">
+    <h3> plaque </h3>
+    <p>prix : 100 DH</p>
+    <button onclick="addToCart(' plaque ', 100)">➕ أضف للسلة</button>
+  </div>
+
+  <div class="product">
+    <img src="prokemey.jpeg">
+    <h3>Épilateur visage hada</h3>
+    <p>prix : 100 DH</p>
+    <button onclick="addToCart('Épilateur visage hada', 100)">➕ أضف للسلة</button>
+  </div>
+
+  <div class="product">
+    <img src="fota 3 tai.jpeg">
+    <h3> 3 futa </h3>
+    <p>prix : 130 DH</p>
+    <button onclick="addToCart('3 futa ', 130)">➕ أضف للسلة</button>
+  </div>
+
+  <div class="product">
+    <img src="dalina.jpeg">
+    <h3>Sanitetspapper</h3>
+    <p>prix : 15 DH</p>
+    <button onclick="addToCart('Sanitetspapper', 15)">➕ أضف للسلة</button>
+  </div>
+</section>
+
+<!-- السلة -->
+<section class="cart">
+  <h2>🧾 السلة</h2>
+  <ul id="cartList"></ul>
+  <p id="totalPrice">Totala : 0 DH</p>
+  <button class="order" onclick="sendWhatsApp()">🟢 طلب عبر واتساب</button>
+</section>
+
+<script>
+  let cart = [];
+
+  function addToCart(product, price) {
+    let existing = cart.find(item => item.name === product);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name: product, price: price, qty: 1 });
+    }
+    renderCart();
+  }
+
+  function renderCart() {
+    let list = document.getElementById("cartList");
+    list.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach(item => {
+      let li = document.createElement("li");
+      li.textContent = `${item.name} (الكمية: ${item.qty}) - ${item.price * item.qty} دراهم`;
+      list.appendChild(li);
+      total += item.price * item.qty;
+    });
+
+    document.getElementById("totalPrice").textContent = `المجموع: ${total} دراهم`;
+  }
+
+  function sendWhatsApp() {
+    if (cart.length === 0) {
+      alert("السلة فارغة");
+      return;
+    }
+
+    let message = "📦 طلب جديد:%0A";
+    let total = 0;
+
+    cart.forEach(item => {
+      message += `- ${item.name} (الكمية: ${item.qty}) - ${item.price * item.qty} DH%0A`;
+      total += item.price * item.qty;
+    });
+
+    message += `Totala: ${total} DH`;
+
+    let number = "212634558583"; // بدل برقمك
+    let url = "https://wa.me/" + number + "?text=" + message;
+    window.open(url, "_blank");
+  }
+</script>
+</body>
+</html>
